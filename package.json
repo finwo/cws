@@ -1,0 +1,53 @@
+{
+  "_from": "cws",
+  "_id": "cws@1.2.5",
+  "_inBundle": false,
+  "_integrity": "sha512-oL7B5w9drsbsJ8AhdjCUSYlok531u4Eq441MBXutNJSuIEgRmCqqLJKsrknp6/vWr7duyHd31/W9UwRHoTTmMw==",
+  "_location": "/cws",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cws",
+    "name": "cws",
+    "escapedName": "cws",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cws/-/cws-1.2.5.tgz",
+  "_shasum": "0dea589144ea2e6d3d2e6ed18877522f16c55180",
+  "_spec": "cws",
+  "_where": "/home/finwo/src/finwo",
+  "author": {
+    "name": "Robin Bron",
+    "email": "robin@finwo.nl"
+  },
+  "browser": "src/browser.js",
+  "bundleDependencies": false,
+  "dependencies": {
+    "ws": "^6.2.1"
+  },
+  "deprecated": false,
+  "description": "Cross-platform websockets",
+  "devDependencies": {
+    "tape": "^4.10.2"
+  },
+  "homepage": "http://git.finwo.net/cws",
+  "license": "MIT",
+  "main": "src/common.js",
+  "name": "cws",
+  "repository": {
+    "type": "git",
+    "url": "git+http://git.finwo.net/cws"
+  },
+  "scripts": {
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"cws@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\"",
+    "test": "tape src/test.js"
+  },
+  "version": "1.2.5"
+}
