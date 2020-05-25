@@ -9,7 +9,7 @@
   },
   "description": "Cross-platform websockets",
   "devDependencies": {
-    "tape": "^4.12.1"
+    "tape": "^5.0.1"
   },
   "homepage": "https://github.com/finwo/cws",
   "license": "MIT",
