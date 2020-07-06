@@ -1,0 +1,5 @@
+[ver:1,total:600]
+src/test.js:330,1587463200:150,1588057200:180,r
+package.json:180,1587463200:30,1587466800:150,m
+.github/workflows/nodejs.yml:60,1588057200:60,r
+.github/workflows/npmpublish.yml:30,1587466800:30,d
