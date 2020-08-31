@@ -3,41 +3,6 @@
   const WebSocket = window.WebSocket || false;
   if (!WebSocket) throw new Error('This browser does not support websockets');
 
-  // Small eventEmitter library
-  // Copied from https://github.com/finwo/js-simple-ee/blob/master/index.js
-  const EventEmitter = window.EventEmitter || function EventEmitter(subject) {
-    subject = subject || this;
-    if (subject === window) return new EventEmitter();
-    subject._events = {};
-    subject.on      = function (name, handler) {
-      (subject._events[name] = subject._events[name] || [])
-        .push(handler);
-      return subject;
-    };
-    subject.off     = function (name, handler) {
-      subject._events[name] = (subject._events[name] || [])
-        .filter(function (listener) {
-          return handler !== listener;
-        });
-      return subject;
-    };
-    subject.emit    = function () {
-      var args = Array.prototype.slice.call(arguments),
-          name = args.shift(),
-          list = (subject._events[name] = subject._events[name] || []).concat(subject._events['*'] || []);
-      list.forEach(function (handler) {
-        handler.apply(subject, args.slice());
-      });
-      return subject;
-    };
-    subject.once    = function (name, handler) {
-      subject.on(name, function g() {
-        subject.off(name, g);
-        handler.apply(subject, arguments);
-      });
-    };
-  };
-
   // Our wrapper
   function CWS(address, protocols, options) {
 
