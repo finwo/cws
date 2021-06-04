@@ -1,7 +1,19 @@
-;(() => {
+(() => {
   if ('object' !== typeof window) return; // Not running in a browser
   const WebSocket = window.WebSocket || false;
   if (!WebSocket) throw new Error('This browser does not support websockets');
+
+  // Minimal event polyfill
+  const EventEmitter = window.EventEmitter || function EventEmitter() {
+    let listeners = {};
+    this.emit = (event, data) => {
+      (listeners[event]||[]).forEach(listener => listener(data));
+    };
+    this.on = (event, handler) => {
+      listeners[event] = listeners[event] || [];
+      listeners[event].push(handler);
+    };
+  };
 
   // Our wrapper
   function CWS(address, protocols, options) {
@@ -23,7 +35,7 @@
     Object.defineProperty(out,'readyState',{
       configurable: false,
       enumerable  : true,
-      get         : () => ws.readyState
+      get         : () => ws.readyState,
     });
 
     // Register event passthrough

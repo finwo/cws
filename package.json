@@ -9,6 +9,7 @@
   },
   "description": "Cross-platform websockets",
   "devDependencies": {
+    "eslint": "^7.27.0",
     "tape": "^5.0.1"
   },
   "homepage": "https://github.com/finwo/cws",
@@ -21,7 +22,7 @@
   },
   "scripts": {
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"cws@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\"",
-    "test": "tape src/test.js"
+    "test": "tape src/test.js && eslint src/*.js"
   },
   "funding": {
     "url": "https://github.com/sponsors/finwo"
