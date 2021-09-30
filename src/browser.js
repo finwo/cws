@@ -47,9 +47,14 @@
     ws.onmessage = async function (event) {
       let message = event.data;
 
-      // Convert blob into buffer (provided by browserify/webpack)
+      // Convert blob into string
       if (('function' === typeof Blob) && (message instanceof Blob)) {
-        message = Buffer.from(await new Response(message).arrayBuffer());
+        message = await message.text();
+      }
+
+      // Convert buffer into string
+      if (('function' === typeof Buffer) && (message instanceof Buffer)) {
+        message = message.toString();
       }
 
       out.emit('message', message);
