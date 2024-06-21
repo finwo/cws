@@ -5,7 +5,7 @@
   },
   "browser": "src/browser.js",
   "dependencies": {
-    "ws": "^8.2.2"
+    "ws": "^8.17.1"
   },
   "description": "Cross-platform websockets",
   "devDependencies": {
